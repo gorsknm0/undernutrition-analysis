@@ -16,10 +16,11 @@ library(readr)
 
 # load data
 individuals <- read_csv('Data Files for Git/repeat_individual_questionnaire.csv')
-
 households <- read_csv('Data Files for Git/Submissions.csv')
+  # comes from AWS: bohemia-datalake/bohemia-safety-efficacy/crf.zip
 
 wealth <- read_csv('Data Files for Git/wealth_index.csv')
+  # comes from Joe but is accurate according to Virginia Tech Researchers
 
 wih <- individuals %>%
   left_join(households,by=c('parent_key'='key')) %>%
@@ -30,12 +31,13 @@ wih <- individuals %>%
 
 encryption <- read_csv('Data Files for Git/household_id_encryptions.csv') %>%
   mutate(hh_id = anonymized_household_id)
-
+  # comes from Joe
 
 
 minicensus_data <- read.csv('Data Files for Git/minicensus_data.csv')
 minicensus_household_final <- read.csv('Data Files for Git/minicensus_household_final.csv')
 minicensus_wealth_index <- read.csv('Data Files for Git/minicensus_wealth_index.csv')
+  # comes from: 
 
 minicensus <- merge(minicensus_data, minicensus_household_final, by = c('hh_id', 'hh_n_constructions', 'hh_n_constructions_sleep', 'n_nets_in_hh'), all=TRUE) %>%
   merge(minicensus_wealth_index, by = c('hh_id', 'hh_n_constructions', 'n_nets_in_hh', 'hh_owns_cattle_or_pigs'), all=TRUE) %>%
