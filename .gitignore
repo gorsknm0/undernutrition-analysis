@@ -1,4 +1,15 @@
+# R-related files to ignore
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
+
+# Datasets
+*.csv
+*.xlsx
+
+# Data file
+/data
+
+# Word documents
+*.docx
